@@ -1,0 +1,121 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+
+    <script>
+
+        // document.cookie="name=Petrov; ";
+
+        // document.cookie="age=45; ";
+        // s=document.cookie;
+
+        // i=s.indexOf("age");
+
+        // document.cookie = "name=oeschger; SameSite=None; Secure";
+        // document.cookie = "favorite_food=tripe; SameSite=None; Secure";
+
+        // function showCookies() {
+        // const output = document.getElementById('cookies')
+        // output.textContent = '> ' + document.cookie
+        // }
+
+        // function clearOutputCookies() {
+        // const output = document.getElementById('cookies')
+        // output.textContent = ''
+        // document.cookie = "asdasdasd"
+// }
+    document.cookie = "/home/ilezhapekau/labs/123.jpg"
+
+    function getLengthOfCookies () {
+        return document.cookie.split(';').length
+    }
+
+    function showAllCookies() {
+        alert(document.cookie);
+    }
+
+    function getArrayOfCookies(){
+        return documnet.cookie.split(';')
+    }
+
+    function storeFileIntpCookie(){
+        newFile = document.getElementById('newImage')
+        console.log(newFile.value)
+        index_of_image = getLengthOfCookies() 
+        document.cookie=`image${index_of_image} = ${newFile.value}`
+    }
+
+    function deleteAllCookies() {
+        const cookies = document.cookie.split(";");
+        for (const cookie of cookies) {
+            const eqPos = cookie.indexOf("=");
+            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    } 
+
+    function getArrayOfCookies(){
+        cook = document.cookie.split('; ')
+        alert(cook)
+    }
+
+    function returnImagesFromCookies(){
+        cookies = getArrayOfCookies()
+        cook = cookies.map((c) =>
+            <img src alt="">
+        )
+        return(
+            <div>
+                cookies.map((c) => 
+                    img 
+                )
+            </div>
+        )
+    }
+
+    </script>
+
+    <button onclick="showAllCookies()">Show cookies</button>
+
+    <!-- <button onclick="getArrayOfCookies()">
+        Clear123
+    </button> -->
+<!-- 
+    <button onclick="getLengthOfCookies()">
+        len
+    </button> -->
+
+    <button onclick="deleteAllCookies()">
+        Clear
+    </button>
+
+    <div>
+        <input id='newImage' name="image" type="file">
+        <button onclick="storeFileIntpCookie()">Submit</button>
+    </div>  
+    <!-- <div>
+        <img src="123.jpg" alt="">
+    </div> -->
+
+
+       <!-- <script>
+        function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = ;
+        }
+    </script> -->
+</body>
+</html>
