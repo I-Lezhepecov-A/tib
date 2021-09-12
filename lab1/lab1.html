@@ -1,8 +1,3 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,31 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body> 
+<body id='body'> 
 
     <script>
-
-        // document.cookie="name=Petrov; ";
-
-        // document.cookie="age=45; ";
-        // s=document.cookie;
-
-        // i=s.indexOf("age");
-
-        // document.cookie = "name=oeschger; SameSite=None; Secure";
-        // document.cookie = "favorite_food=tripe; SameSite=None; Secure";
-
-        // function showCookies() {
-        // const output = document.getElementById('cookies')
-        // output.textContent = '> ' + document.cookie
-        // }
-
-        // function clearOutputCookies() {
-        // const output = document.getElementById('cookies')
-        // output.textContent = ''
-        // document.cookie = "asdasdasd"
-// }
-    document.cookie = "/home/ilezhapekau/labs/123.jpg"
+    document.cookie = "image0=C:/fakepath/123.jpg"
 
     function getLengthOfCookies () {
         return document.cookie.split(';').length
@@ -46,10 +20,24 @@
     }
 
     function getArrayOfCookies(){
-        return documnet.cookie.split(';')
+        cookies = document.cookie.split(';')
+        return cookies
     }
 
-    function storeFileIntpCookie(){
+    function getFileNames(){
+        cookies = getArrayOfCookies()
+        array_of_files = []
+        cookies.forEach(c => {
+            array_of_files.push(c.split('=')[1].slice(12))  //image0=C:/fakepath/123.jpg --> 123.jpg
+        })
+        console.log(array_of_files)
+        return array_of_files
+
+    }
+        
+    getFileNames()
+
+    function storeFileIntoCookie (){
         newFile = document.getElementById('newImage')
         console.log(newFile.value)
         index_of_image = getLengthOfCookies() 
@@ -65,57 +53,33 @@
         }
     } 
 
-    function getArrayOfCookies(){
-        cook = document.cookie.split('; ')
-        alert(cook)
-    }
-
     function returnImagesFromCookies(){
-        cookies = getArrayOfCookies()
-        cook = cookies.map((c) =>
-            <img src alt="">
-        )
-        return(
-            <div>
-                cookies.map((c) => 
-                    img 
-                )
-            </div>
-        )
+        cookies = getFileNames()
+        cookies.forEach(c => {
+            var newDiv = document.createElement("div");
+            var img = new Image();
+            img.src = c
+            my_div = document.getElementById("body").appendChild(img);
+            document.body.insertBefore(newDiv, my_div);
+        });
     }
 
     </script>
 
     <button onclick="showAllCookies()">Show cookies</button>
 
-    <!-- <button onclick="getArrayOfCookies()">
-        Clear123
-    </button> -->
-<!-- 
-    <button onclick="getLengthOfCookies()">
-        len
-    </button> -->
-
     <button onclick="deleteAllCookies()">
         Clear
     </button>
 
+    <button onclick="returnImagesFromCookies()">
+        Clear123
+    </button>
+
     <div>
-        <input id='newImage' name="image" type="file">
-        <button onclick="storeFileIntpCookie()">Submit</button>
+        <input id='newImage' name="image" type="file" >
+        <button onclick="storeFileIntoCookie()">Submit</button>
     </div>  
-    <!-- <div>
-        <img src="123.jpg" alt="">
-    </div> -->
-
-
-       <!-- <script>
-        function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie = ;
-        }
-    </script> -->
+    
 </body>
 </html>
